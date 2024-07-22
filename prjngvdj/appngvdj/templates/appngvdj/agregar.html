@@ -1,0 +1,30 @@
+{% extends "appngvdj/base.html" %}
+
+{% block titulo %}
+Menú Principal
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h1>Hacer Un Pedido</h1>
+
+<article class="row">
+    <section class="col"></section>
+    <article class="col">
+    <form action="{% url 'hacerPedido' %}" method="post" style="width: 30rem;" class="card bg-dark">
+        {% csrf_token %}
+        <input type="text" name="identificacion" placeholder="Digita Tu Número De Documento" class="form-control" required><br>
+        <input type="text" name="libro" placeholder="Digita El Nombre Del Libro" class="form-control" required><br>
+        <input type="text" name="cantidad" placeholder="Digita La Cantidad A Pedir" class="form-control"><br>
+        <article class="row">
+            <section class="col"></section>
+            <section class="col"><input type="submit" value="Hacer Pedido" class="btn btn-outline-light" style="width: 30vh;"></section>
+            <section class="col"></section>
+            
+        </article>
+    </form>
+</article>
+    <section class="col"></section>
+</article>
+
+{% endblock contenido %} 

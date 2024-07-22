@@ -1,0 +1,111 @@
+{% extends 'appngvdj/base.html' %}
+
+{% block titulo %}
+  Menú Principal
+{% endblock %}
+
+{% block contenido %}
+  <h1>Nuestro Stock Literario</h1>
+  <article class="tablas">
+    <section class="lados"></section>
+
+    <table class="table table-dark table-striped">
+      <thead>
+        <th>Género</th>
+        <th>Título</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        {% for libro in libros %}
+          <tr>
+            <td>{{ libro.id_categoria.categoria }}</td>
+            <td>{{ libro.titulo }}</td>
+            <td>{{ libro.precio }}</td>
+            <td>{{ libro.cantidad_stock }}</td>
+            <td>
+              <a href="{% url 'modLibro' isbn=libro.isbn %}" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Modificar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <section class="lados"></section>
+  </article>
+  <article class="row">
+    <section class="col"></section>
+    <h4 class="col">¿Alguna <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'libro' %}">nueva obra</a> que agregar?</h4>
+    <section class="col"></section>
+  </article><br /><br />
+
+  <h1>La Mente Creativa Tras Ellos</h1>
+  <article class="tablas">
+    <section class="lados"></section>
+
+    <table class="table table-dark table-striped">
+      <thead>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        {% for autor in autores %}
+          <tr>
+            <td>{{ autor.nombres }}</td>
+            <td>{{ autor.apellidos }}</td>
+            <td>
+              <a href="{% url 'modAutor' id_autor=autor.id_autor %}" class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Modificar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <section class="lados"></section>
+  </article>
+  <article class="row">
+    <section class="col"></section>
+    <h4 class="col">¿Necesitas <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'autor' %}">Agregar un autor</a> nuevo?</h4>
+    <section class="col"></section>
+  </article><br /><br />
+
+  <h1>Nuestros Clientes</h1>
+  <article class="tablas">
+    <section class="lados"></section>
+
+    <table class="table table-dark table-striped">
+      <thead>
+        <th>Nombres</th>
+        <th>Identificación</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        {% for cliente in clientes %}
+          <tr>
+            <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+            <td>{{ cliente.identificacion }}</td>
+            <td>
+              <a class="link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'modCliente' idCliente=cliente.id_cliente %}">Modificar</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <section class="lados"></section>
+  </article>
+  <article class="row">
+    <section class="col"></section>
+    <h4 class="col">¿Se ha unido alguien más? <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'clientes' %}">Clientes</a></h4>
+    <section class="col"></section>
+  </article><br /><br />
+
+  <h1>Nuestros Pedidos</h1>
+  <article class="row">
+    <section class="col"></section>
+    <h4 class="col"><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'hacerPedido' %}">Nuevo pedido</a> o <a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'pedidos' %}">Mis pedidos</a></h4>
+    <section class="col"></section>
+  </article>
+{% endblock %}

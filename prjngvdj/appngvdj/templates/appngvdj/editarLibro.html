@@ -1,0 +1,36 @@
+{% extends 'appngvdj/base.html' %}
+
+{% block titulo %}
+  Modificar Libro
+{% endblock %}
+{% block contenido %}
+  <h1>Modificando {{ libro.titulo }}</h1>
+
+  <article class="row">
+    <section class="col"></section>
+    <form action="{% url 'modLibro' libro.isbn %}" method="post" class="card bg-dark" style="width: 30rem;">
+      {% csrf_token %}
+      <input type="text" class="form-control" name="isbn" value="{{ libro.isbn }}" readonly /><br />
+      <input type="text" class="form-control" name="titulo" value="{{ libro.titulo }}" required /><br />
+      <input type="date" class="form-control" name="fecha_pub" value="{{ libro.fecha_pub|date:'Y-m-d' }}" required /><br />
+      <input type="text" class="form-control" name="precio" value="{{ libro.precio }}" required /><br />
+      <input type="text" class="form-control" name="stock" value="{{ libro.cantidad_stock }}" required /><br />
+      <select name="categoria" class="form-select" required>
+        <option value="{{ libro.id_categoria.categoria }}">{{ libro.id_categoria.categoria }}</option>
+        {% for categoria in categorias %}
+          {% if libro.id_categoria.categoria != categoria.categoria %}
+            <option value="{{ categoria.categoria }}">{{ categoria.categoria }}</option>
+          {% endif %}
+        {% endfor %}
+      </select><br />
+      <article class="row">
+        <section class="col"></section>
+        <section class="col">
+          <input type="submit" value="Modificar Libro" class="btn btn-outline-light" style="width: 30vh;" />
+        </section>
+        <section class="col"></section>
+      </article>
+    </form>
+    <section class="col"></section>
+  </article>
+{% endblock %}

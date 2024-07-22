@@ -1,0 +1,23 @@
+{% extends 'appngvdj/base.html' %}
+
+{% block titulo %}
+  Eliminar Pedido
+{% endblock %}
+{% block contenido %}
+  <h2>¿Estas seguro de ELIMINAR tu pedido? de {{ pedido.cantidad }} libro(s) tituldos {{ pedido.isbn.titulo }}</h2>
+  <article class="row">
+    <section class="col"></section>
+    <form action="{% url 'elimPedido' pedido.id_pedido %}" method="post" style="width: 30rem;">
+      {% csrf_token %}
+      <article class="container">
+        <input type="hidden" class="form-control" name="idPedido" value="{{ pedido.id_pedido }}" />
+      </article>
+      <article class="row">
+        <section class="col"></section>
+        <section class="col"><input type="submit" value="Si, estoy seguro" class="btn btn-outline-dark" style="width: 30vh;"></section>
+        <section class="col"></section>
+    </article>
+    </form>
+    <section class="col"></section>
+  </article>
+{% endblock %}

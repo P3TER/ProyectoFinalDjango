@@ -1,0 +1,34 @@
+{% extends "appngvdj/base.html" %}
+
+{% block titulo %}
+Agregar Libro
+{% endblock titulo %}
+{% block contenido %}
+<h1>Agregar Obra</h1>
+
+<article class="row">
+    <section class="col"></section>
+    <form action="{% url 'libro' %}" method="post" class="card bg-dark" style="width: 30rem;">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="isbn" placeholder="Digita El ISBN Del Libro" required><br>
+        <input type="text" class="form-control" name="titulo" placeholder="Digita El Título Del Libro" required><br>
+        <input type="date" class="form-control" name="fecha_pub" placeholder="Digita El Título Del Libro" required><br>
+        <input type="text" class="form-control" name="precio" placeholder="Digita El Precio" required><br>
+        <input type="text" class="form-control" name="stock" placeholder="Digita La Cantidad De Stock" required><br>
+        <select name="categoria" class="form-select" required>
+            
+            {% for categoria in categorias %}
+                <option value="{{categoria.categoria}}">{{categoria.categoria}}</option>
+            {% endfor %}
+                
+        </select><br>
+        <article class="row">
+            <section class="col"></section>
+            <section class="col"><input type="submit" value="Agregar Libro" class="btn btn-outline-light" style="width: 30vh;"></section>
+            <section class="col"></section>
+        </article>
+        
+    </form>
+    <section class="col"></section>
+</article>
+{% endblock contenido %}

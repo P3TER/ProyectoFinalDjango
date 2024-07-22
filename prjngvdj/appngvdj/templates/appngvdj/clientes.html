@@ -1,0 +1,32 @@
+{% extends 'appngvdj/base.html' %}
+
+{% block titulo %}
+  Clientes
+{% endblock %}
+
+{% block contenido %}
+  <h1>Añadir Cliente</h1>
+  <article class="row">
+    <section class="col"></section>
+    <section class="col">
+    <form action="{% url 'clientes' %}" method="post" style="width: 30rem;" class="card bg-dark">
+      {% csrf_token %}
+      <article class="container">
+        <input type="text" required name="nombres" placeholder="Ingrese su(s) nombre(s)" class="form-control" /><br>
+        <input type="text" required name="apellidos" placeholder="Ingrese sus apellidos" class="form-control" /><br>
+        <input type="text" required name="id" placeholder="Ingrese su identificación" class="form-control" /><br>
+        <input type="text" required name="telefono" placeholder="Ingrese su teléfono" class="form-control" /><br>
+        <input type="text" name="direccion" placeholder="Ingrese su dirección" class="form-control" /><br>
+        <input type="email" required name="correo" placeholder="Ingrese su correo" class="form-control" /><br>
+      </article>
+      <article class="row">
+        <section class="col"></section>
+        <section class="col"><input type="submit" value="Registrar" class="btn btn-outline-light" style="width: 30vh;"></section>
+        <section class="col"></section>
+        
+    </article>
+    </form>
+  </section>
+    <section class="col"></section>
+  </article>
+{% endblock %}
